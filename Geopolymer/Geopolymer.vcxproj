@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{cf71b96b-81fb-47e0-aadb-3a75d9109a1c}</ProjectGuid>
+    <RootNamespace>Geopolymer</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;GEOPOLYMER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;GEOPOLYMER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;GEOPOLYMER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;GEOPOLYMER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="CustomSDK\HookManager\HookManager.h" />
+    <ClInclude Include="CustomSDK\InterfaceManager\CInterface.h" />
+    <ClInclude Include="CustomSDK\Memory\CMemory.h" />
+    <ClInclude Include="CustomSDK\Memory\ntdll.h" />
+    <ClInclude Include="CustomSDK\MyPlayer\CLocalPlayer.h" />
+    <ClInclude Include="Features\Visuals\Chams.h" />
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Thirdparty\MinHook\buffer.h" />
+    <ClInclude Include="Thirdparty\MinHook\hde\hde32.h" />
+    <ClInclude Include="Thirdparty\MinHook\hde\hde64.h" />
+    <ClInclude Include="Thirdparty\MinHook\hde\pstdint.h" />
+    <ClInclude Include="Thirdparty\MinHook\hde\table32.h" />
+    <ClInclude Include="Thirdparty\MinHook\hde\table64.h" />
+    <ClInclude Include="Thirdparty\MinHook\MinHook.h" />
+    <ClInclude Include="Thirdparty\MinHook\trampoline.h" />
+    <ClInclude Include="Thirdparty\xorstr.h" />
+    <ClInclude Include="ValveSDK\Entities\C_BaseAnimating.h" />
+    <ClInclude Include="ValveSDK\Entities\C_BaseCombatCharacter.h" />
+    <ClInclude Include="ValveSDK\Entities\C_BaseCombatWeapon.h" />
+    <ClInclude Include="ValveSDK\Entities\C_BaseEntity.h" />
+    <ClInclude Include="ValveSDK\Entities\C_BaseFlex.h" />
+    <ClInclude Include="ValveSDK\Entities\C_BasePlayer.h" />
+    <ClInclude Include="ValveSDK\Entities\C_CSPlayer.h" />
+    <ClInclude Include="ValveSDK\Entities\C_WeaponCSBase.h" />
+    <ClInclude Include="ValveSDK\Entities\IClientEntity.h" />
+    <ClInclude Include="ValveSDK\Entities\IClientNetworkable.h" />
+    <ClInclude Include="ValveSDK\Entities\IClientRenderable.h" />
+    <ClInclude Include="ValveSDK\Entities\IClientThinkable.h" />
+    <ClInclude Include="ValveSDK\Entities\IClientUnknown.h" />
+    <ClInclude Include="ValveSDK\Includes\basehandle.h" />
+    <ClInclude Include="ValveSDK\Includes\bitbuf.h" />
+    <ClInclude Include="ValveSDK\Includes\checksum_crc.h" />
+    <ClInclude Include="ValveSDK\Includes\checksum_md5.h" />
+    <ClInclude Include="ValveSDK\Includes\client_class.h" />
+    <ClInclude Include="ValveSDK\Includes\color.h" />
+    <ClInclude Include="ValveSDK\Includes\const.h" />
+    <ClInclude Include="ValveSDK\Includes\dt_common.h" />
+    <ClInclude Include="ValveSDK\Includes\dt_recv.h" />
+    <ClInclude Include="ValveSDK\Includes\ehandle.h" />
+    <ClInclude Include="ValveSDK\Includes\gameeventlistener.h" />
+    <ClInclude Include="ValveSDK\Includes\iappsystem.h" />
+    <ClInclude Include="ValveSDK\Includes\iconvar.h" />
+    <ClInclude Include="ValveSDK\Includes\igameevents.h" />
+    <ClInclude Include="ValveSDK\Includes\ihandleentity.h" />
+    <ClInclude Include="ValveSDK\Includes\imageformat.h" />
+    <ClInclude Include="ValveSDK\Includes\inetchannel.h" />
+    <ClInclude Include="ValveSDK\Includes\inetchannelinfo.h" />
+    <ClInclude Include="ValveSDK\Includes\in_buttons.h" />
+    <ClInclude Include="ValveSDK\Includes\isurface.h" />
+    <ClInclude Include="ValveSDK\Includes\ivguimatinfo.h" />
+    <ClInclude Include="ValveSDK\Includes\ivguimatinfovar.h" />
+    <ClInclude Include="ValveSDK\Includes\strtools.h" />
+    <ClInclude Include="ValveSDK\Includes\studio.h" />
+    <ClInclude Include="ValveSDK\Includes\usercmd.h" />
+    <ClInclude Include="ValveSDK\Includes\utlvector.h" />
+    <ClInclude Include="ValveSDK\Includes\view_shared.h" />
+    <ClInclude Include="ValveSDK\Includes\xboxstubs.h" />
+    <ClInclude Include="ValveSDK\Interfaces\CHLClient.h" />
+    <ClInclude Include="ValveSDK\Interfaces\GlobalVars_Base.h" />
+    <ClInclude Include="ValveSDK\Interfaces\IClientEntityList.h" />
+    <ClInclude Include="ValveSDK\Interfaces\ICvar.h" />
+    <ClInclude Include="ValveSDK\Interfaces\IEngineTrace.h" />
+    <ClInclude Include="ValveSDK\Interfaces\IEngineVGui.h" />
+    <ClInclude Include="ValveSDK\Interfaces\IGameMovement.h" />
+    <ClInclude Include="ValveSDK\Interfaces\IMaterialSystem.h" />
+    <ClInclude Include="ValveSDK\Interfaces\IMatSystemSurface.h" />
+    <ClInclude Include="ValveSDK\Interfaces\IMoveHelper.h" />
+    <ClInclude Include="ValveSDK\Interfaces\IPrediction.h" />
+    <ClInclude Include="ValveSDK\Interfaces\IStudioRender.h" />
+    <ClInclude Include="ValveSDK\Interfaces\IVEngineClient.h" />
+    <ClInclude Include="ValveSDK\Interfaces\IVModelRender.h" />
+    <ClInclude Include="ValveSDK\Interfaces\IVRenderView.h" />
+    <ClInclude Include="ValveSDK\mathlib\mathlib.h" />
+    <ClInclude Include="ValveSDK\mathlib\QAngle.h" />
+    <ClInclude Include="ValveSDK\mathlib\Vector.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CustomSDK\HookManager\HookManager.cpp" />
+    <ClCompile Include="CustomSDK\InterfaceManager\CInterface.cpp" />
+    <ClCompile Include="CustomSDK\Memory\CMemory.cpp" />
+    <ClCompile Include="CustomSDK\MyPlayer\CLocalPlayer.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Features\Visuals\Chams.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Thirdparty\MinHook\buffer.c" />
+    <ClCompile Include="Thirdparty\MinHook\hde\hde32.c" />
+    <ClCompile Include="Thirdparty\MinHook\hde\hde64.c" />
+    <ClCompile Include="Thirdparty\MinHook\hook.c" />
+    <ClCompile Include="Thirdparty\MinHook\trampoline.c" />
+    <ClCompile Include="ValveSDK\Includes\checksum_crc.cpp" />
+    <ClCompile Include="ValveSDK\Includes\checksum_md5.cpp" />
+    <ClCompile Include="ValveSDK\mathlib\VMatrix.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Main">
+      <UniqueIdentifier>{9e9c6c54-fd34-45b4-8b50-9372e2a964d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ValveSDK">
+      <UniqueIdentifier>{5c2a0b7a-1f0e-424e-93f7-493db774fc97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ValveSDK\mathlib">
+      <UniqueIdentifier>{6de4092c-e18e-4f9c-a22d-57d0f34587a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ValveSDK\Interfaces">
+      <UniqueIdentifier>{4e2f673b-b8eb-4969-b04b-3dbe5a82bbe3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ValveSDK\Includes">
+      <UniqueIdentifier>{fd09102d-47d3-45c4-84b7-c27871202bc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ValveSDK\Entities">
+      <UniqueIdentifier>{5c4041f2-c1ce-49e1-b084-ed1f218a2539}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thirdparty">
+      <UniqueIdentifier>{bda4b860-a6d5-431a-99f2-028ed170a2d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thirdparty\MinHook">
+      <UniqueIdentifier>{c61ec3ea-08b1-42f2-a84e-5cf95718ec7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thirdparty\MinHook\hde">
+      <UniqueIdentifier>{f9b9b5c5-df56-484f-9f71-04a707863bc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CustomSDK">
+      <UniqueIdentifier>{b33edeec-ad59-4832-844a-121242286b1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CustomSDK\InterfaceManager">
+      <UniqueIdentifier>{b1dc415a-159f-429f-bef6-fd55ca522865}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CustomSDK\HookManager">
+      <UniqueIdentifier>{7c753ef0-2756-4e54-af24-f39bf36868db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CustomSDK\Memory">
+      <UniqueIdentifier>{310d3cb4-40d0-4aa1-b9e1-fdbe319a708b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CustomSDK\MyPlayer">
+      <UniqueIdentifier>{842bffdf-9749-4948-9948-70356f418e1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Features">
+      <UniqueIdentifier>{8f960dd2-27d8-4b25-a3bf-5e1d35e4c65f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Features\Visuals">
+      <UniqueIdentifier>{2b5d6efa-a499-4b38-85e4-b414c5b0f275}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\mathlib\mathlib.h">
+      <Filter>ValveSDK\mathlib</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\mathlib\Vector.h">
+      <Filter>ValveSDK\mathlib</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\mathlib\QAngle.h">
+      <Filter>ValveSDK\mathlib</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Interfaces\CHLClient.h">
+      <Filter>ValveSDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Interfaces\IClientEntityList.h">
+      <Filter>ValveSDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Interfaces\IPrediction.h">
+      <Filter>ValveSDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Interfaces\IGameMovement.h">
+      <Filter>ValveSDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Interfaces\IMoveHelper.h">
+      <Filter>ValveSDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Interfaces\GlobalVars_Base.h">
+      <Filter>ValveSDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Interfaces\ICvar.h">
+      <Filter>ValveSDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Interfaces\IEngineTrace.h">
+      <Filter>ValveSDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Interfaces\IEngineVGui.h">
+      <Filter>ValveSDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Interfaces\IMatSystemSurface.h">
+      <Filter>ValveSDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Interfaces\IStudioRender.h">
+      <Filter>ValveSDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Interfaces\IVEngineClient.h">
+      <Filter>ValveSDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Interfaces\IVModelRender.h">
+      <Filter>ValveSDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Interfaces\IVRenderView.h">
+      <Filter>ValveSDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\basehandle.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\bitbuf.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\checksum_crc.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\checksum_md5.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\client_class.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\color.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\const.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\dt_common.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\dt_recv.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\ehandle.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\gameeventlistener.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\iappsystem.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\iconvar.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\igameevents.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\ihandleentity.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\imageformat.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\in_buttons.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\inetchannel.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\inetchannelinfo.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\isurface.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\ivguimatinfo.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\ivguimatinfovar.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\strtools.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\studio.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\usercmd.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\utlvector.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\view_shared.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\xboxstubs.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Entities\C_BaseAnimating.h">
+      <Filter>ValveSDK\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Entities\C_BaseCombatCharacter.h">
+      <Filter>ValveSDK\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Entities\C_BaseCombatWeapon.h">
+      <Filter>ValveSDK\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Entities\C_BaseEntity.h">
+      <Filter>ValveSDK\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Entities\C_BaseFlex.h">
+      <Filter>ValveSDK\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Entities\C_BasePlayer.h">
+      <Filter>ValveSDK\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Entities\C_CSPlayer.h">
+      <Filter>ValveSDK\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Entities\C_WeaponCSBase.h">
+      <Filter>ValveSDK\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Entities\IClientEntity.h">
+      <Filter>ValveSDK\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Entities\IClientNetworkable.h">
+      <Filter>ValveSDK\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Entities\IClientRenderable.h">
+      <Filter>ValveSDK\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Entities\IClientThinkable.h">
+      <Filter>ValveSDK\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Entities\IClientUnknown.h">
+      <Filter>ValveSDK\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirdparty\MinHook\hde\hde32.h">
+      <Filter>Thirdparty\MinHook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirdparty\MinHook\hde\hde64.h">
+      <Filter>Thirdparty\MinHook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirdparty\MinHook\hde\pstdint.h">
+      <Filter>Thirdparty\MinHook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirdparty\MinHook\hde\table32.h">
+      <Filter>Thirdparty\MinHook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirdparty\MinHook\hde\table64.h">
+      <Filter>Thirdparty\MinHook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirdparty\MinHook\buffer.h">
+      <Filter>Thirdparty\MinHook</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirdparty\MinHook\MinHook.h">
+      <Filter>Thirdparty\MinHook</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirdparty\MinHook\trampoline.h">
+      <Filter>Thirdparty\MinHook</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomSDK\InterfaceManager\CInterface.h">
+      <Filter>CustomSDK\InterfaceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirdparty\xorstr.h">
+      <Filter>Thirdparty</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomSDK\HookManager\HookManager.h">
+      <Filter>CustomSDK\HookManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomSDK\Memory\CMemory.h">
+      <Filter>CustomSDK\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomSDK\Memory\ntdll.h">
+      <Filter>CustomSDK\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="ValveSDK\Interfaces\IMaterialSystem.h">
+      <Filter>ValveSDK\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomSDK\MyPlayer\CLocalPlayer.h">
+      <Filter>CustomSDK\MyPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\Visuals\Chams.h">
+      <Filter>Features\Visuals</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ValveSDK\mathlib\VMatrix.cpp">
+      <Filter>ValveSDK\mathlib</Filter>
+    </ClCompile>
+    <ClCompile Include="ValveSDK\Includes\checksum_crc.cpp">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClCompile>
+    <ClCompile Include="ValveSDK\Includes\checksum_md5.cpp">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClCompile>
+    <ClCompile Include="Thirdparty\MinHook\hde\hde32.c">
+      <Filter>Thirdparty\MinHook\hde</Filter>
+    </ClCompile>
+    <ClCompile Include="Thirdparty\MinHook\hde\hde64.c">
+      <Filter>Thirdparty\MinHook\hde</Filter>
+    </ClCompile>
+    <ClCompile Include="Thirdparty\MinHook\buffer.c">
+      <Filter>Thirdparty\MinHook</Filter>
+    </ClCompile>
+    <ClCompile Include="Thirdparty\MinHook\hook.c">
+      <Filter>Thirdparty\MinHook</Filter>
+    </ClCompile>
+    <ClCompile Include="Thirdparty\MinHook\trampoline.c">
+      <Filter>Thirdparty\MinHook</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomSDK\InterfaceManager\CInterface.cpp">
+      <Filter>CustomSDK\InterfaceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomSDK\HookManager\HookManager.cpp">
+      <Filter>CustomSDK\HookManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomSDK\Memory\CMemory.cpp">
+      <Filter>CustomSDK\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomSDK\MyPlayer\CLocalPlayer.cpp">
+      <Filter>CustomSDK\MyPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="Features\Visuals\Chams.cpp">
+      <Filter>Features\Visuals</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
