@@ -1,10 +1,8 @@
 #include "pch.h"
 #include "Thirdparty/xorstr.h"
-
 #include "CustomSDK/InterfaceManager/CInterface.h"
 #include "CustomSDK/HookManager/HookManager.h"
 #include "CustomSDK/Memory/CMemory.h"
-
 
 /*
 

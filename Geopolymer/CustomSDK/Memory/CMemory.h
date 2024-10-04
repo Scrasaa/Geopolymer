@@ -12,13 +12,11 @@ private:
 
     int CmpUnicodeStr(const WCHAR* substr, const WCHAR* mystr);
 
-protected:
-    PEB* GetPEB() const;
 public:
 
     HMODULE ResolveModuleBaseAddressPEB(char* szModuleName) const;
 
-    PDWORD GetFunctionAddressByHash(char* library, DWORD hash) const;
+    PDWORD GetFunctionAddressByHash(char* library, DWORD hash);
 
     void* GetFunctionAddress(char* MyNtdllFunction, PVOID MyDLLBaseAddress) const;
 
@@ -39,9 +37,11 @@ public:
 
 };
 
-class CPatternScan : protected CMemory
+class CPatternScan 
 {
 private:
+
+    PEB* GetPEB();
     char* ScanInWrapper(char* pattern, char* mask, char* begin, size_t size);
 
     void Parse(char* combo, char* pattern, char* mask);

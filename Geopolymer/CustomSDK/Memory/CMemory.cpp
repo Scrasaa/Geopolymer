@@ -20,7 +20,7 @@ DWORD CMemory::GetHashFromString(char* szString) const
 }
 
 // Structure with ProcessInformation
-PEB* CMemory::GetPEB() const
+PEB* CPatternScan::GetPEB()
 {
 #ifdef _WIN64
     auto peb = (PEB*)__readgsword(0x60);
@@ -32,7 +32,6 @@ PEB* CMemory::GetPEB() const
     return peb;
 }
 
-
 HMODULE CMemory::ResolveModuleBaseAddressPEB(char* szModuleName) const
 {
     // Convert the input module name to LPCWSTR
@@ -41,7 +40,7 @@ HMODULE CMemory::ResolveModuleBaseAddressPEB(char* szModuleName) const
         return nullptr;
     // move getpeb to cmemory and use it instead
     // Access the PEB structure
-    auto pPeb = GetPEB();
+    auto pPeb = (PEB*)__readfsdword(0x30);
 
     PEB_LDR_DATA* pLdr = pPeb->Ldr;
     LIST_ENTRY* pListHead = &pLdr->InMemoryOrderModuleList;
@@ -70,7 +69,7 @@ HMODULE CMemory::ResolveModuleBaseAddressPEB(char* szModuleName) const
     return nullptr;
 }
 
-PDWORD CMemory::GetFunctionAddressByHash(char* library, DWORD hash) const
+PDWORD CMemory::GetFunctionAddressByHash(char* library, DWORD hash)
 {
     PDWORD functionAddress = nullptr;
 
@@ -170,7 +169,7 @@ LPCWSTR CMemory::ConvertToLPCWSTR(const char* szModuleName) const
     // Perform the conversion
     MultiByteToWideChar(CP_UTF8, 0, szModuleName, -1, wideString, wideCharSize);
 
-    return wideString; // Return the converted string
+    return wideString; // Return the converted string, need to handle memory deallocation
 }
 
 int CMemory::CmpUnicodeStr(const WCHAR* substr, const WCHAR* mystr)
