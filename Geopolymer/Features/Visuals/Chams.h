@@ -4,11 +4,11 @@ class IMaterial;
 
 namespace Chams
 {
-	IMaterial* CreateMaterial(const char* szName, bool bFlat, bool bWireFrame, bool bAddShine);
+	IMaterial* CreateMaterial();
 
-	void PushIgnoreZ(bool bIgnoreZ);
+	void PushIgnoreZ();
 	void PopIgnoreZ();
 
-	void PushMaterialOverride(float color[4], int iMaterialType);
+	void PushMaterialOverride(float color[4]);
 	void PopMaterialOverride();
 }

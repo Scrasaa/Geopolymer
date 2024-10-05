@@ -6,19 +6,19 @@
 class CMemory
 {
 private:
-    DWORD GetHashFromString(char* szString) const;
+    DWORD GetHashFromString(char* szString);
 
-    LPCWSTR ConvertToLPCWSTR(const char* szModuleName) const;
+    LPCWSTR ConvertToLPCWSTR(const char* szModuleName);
 
     int CmpUnicodeStr(const WCHAR* substr, const WCHAR* mystr);
 
 public:
 
-    HMODULE ResolveModuleBaseAddressPEB(char* szModuleName) const;
+    HMODULE ResolveModuleBaseAddressPEB(char* szModuleName);
 
     PDWORD GetFunctionAddressByHash(char* library, DWORD hash);
 
-    void* GetFunctionAddress(char* MyNtdllFunction, PVOID MyDLLBaseAddress) const;
+    void* GetFunctionAddress(char* MyNtdllFunction, PVOID MyDLLBaseAddress);
 
     template<typename T>
     T GetVTableFunction(void* pBase, int iIndex)

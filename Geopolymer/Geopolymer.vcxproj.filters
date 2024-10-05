@@ -279,6 +279,12 @@
     <ClInclude Include="Features\Visuals\Chams.h">
       <Filter>Features\Visuals</Filter>
     </ClInclude>
+    <ClInclude Include="ValveSDK\Includes\KeyValues.h">
+      <Filter>ValveSDK\Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="globals.h">
+      <Filter>Main</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -325,6 +331,9 @@
     </ClCompile>
     <ClCompile Include="Features\Visuals\Chams.cpp">
       <Filter>Features\Visuals</Filter>
+    </ClCompile>
+    <ClCompile Include="ValveSDK\Includes\KeyValues.cpp">
+      <Filter>ValveSDK\Includes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

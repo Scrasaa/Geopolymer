@@ -150,6 +150,7 @@
     <ClInclude Include="CustomSDK\MyPlayer\CLocalPlayer.h" />
     <ClInclude Include="Features\Visuals\Chams.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="globals.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Thirdparty\MinHook\buffer.h" />
     <ClInclude Include="Thirdparty\MinHook\hde\hde32.h" />
@@ -195,6 +196,7 @@
     <ClInclude Include="ValveSDK\Includes\isurface.h" />
     <ClInclude Include="ValveSDK\Includes\ivguimatinfo.h" />
     <ClInclude Include="ValveSDK\Includes\ivguimatinfovar.h" />
+    <ClInclude Include="ValveSDK\Includes\KeyValues.h" />
     <ClInclude Include="ValveSDK\Includes\strtools.h" />
     <ClInclude Include="ValveSDK\Includes\studio.h" />
     <ClInclude Include="ValveSDK\Includes\usercmd.h" />
@@ -240,6 +242,7 @@
     <ClCompile Include="Thirdparty\MinHook\trampoline.c" />
     <ClCompile Include="ValveSDK\Includes\checksum_crc.cpp" />
     <ClCompile Include="ValveSDK\Includes\checksum_md5.cpp" />
+    <ClCompile Include="ValveSDK\Includes\KeyValues.cpp" />
     <ClCompile Include="ValveSDK\mathlib\VMatrix.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

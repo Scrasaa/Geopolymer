@@ -3,18 +3,19 @@
 #include "CustomSDK/InterfaceManager/CInterface.h"
 #include "CustomSDK/HookManager/HookManager.h"
 #include "CustomSDK/Memory/CMemory.h"
+#include "globals.h"
 
 /*
-
 TO-DO:
-- Add KeyValue Class
-- Create own material
-- color chams
 - screenshot / stream proof chams
 - EnginePrediction stuff
 - Backtrack stuff :(
-
+- visible chams
 */
+
+uintptr_t globals::Sig_KeyValue_LoadFromBuffer = 0;
+uintptr_t globals::Sig_KeyValue_Intialize = 0;
+uintptr_t globals::Sig_KeyValue_FindKey = 0;
 
 // Define CreateThread function prototype
 using customCreateThread = HANDLE(NTAPI*)(
@@ -31,6 +32,10 @@ DWORD WINAPI mainRoutine(HMODULE hModule)
     AllocConsole();
     FILE* f;
     freopen_s(&f, xorstr("CONOUT$"), xorstr("w"), stdout);
+
+    globals::Sig_KeyValue_LoadFromBuffer = g_PatternScan->InPatternScan(xorstr("55 8B EC 83 EC ? 53 8B 5D ? 89 4D ? 85 DB"), xorstr("engine.dll"));
+    globals::Sig_KeyValue_Intialize = g_PatternScan->InPatternScan(xorstr("55 8B EC 56 8B F1 6A ? FF 75 ? C7 06 ? ? ? ? C7 46 ? ? ? ? ? C7 46 ? ? ? ? ? C7 46 ? ? ? ? ? C7 46 ? ? ? ? ? C7 46 ? ? ? ? ? C7 46 ? ? ? ? ? C7 46 ? ? ? ? ? FF 15 ? ? ? ? 83 C4 ? 89 06 8B C6"), xorstr("engine.dll"));
+    globals::Sig_KeyValue_FindKey = g_PatternScan->InPatternScan(xorstr("55 8B EC 81 EC ? ? ? ? 56 8B 75 ? 57 8B F9 85 F6 0F 84"), xorstr("client.dll"));
 
     g_Interface->Initialize();
     HookManager::Initialize();
@@ -68,12 +73,12 @@ BOOL APIENTRY DllMain(HMODULE hModule,
     case DLL_PROCESS_ATTACH:
     {
         // Resolve CreateThread address by hash
-        PDWORD functionAddress = g_Memory->GetFunctionAddressByHash(xorstr("kernel32"), 0x00544e304);
+        PDWORD functionAddress = g_Memory->GetFunctionAddressByHash((char*)"kernel32", 0x00544e304);
 
         // Point CreateThread function pointer to the CreateThread virtual address resolved by its hash
-        auto CreateCustomThread = reinterpret_cast<customCreateThread>(functionAddress);
+        customCreateThread CreateCustomThread = (customCreateThread)functionAddress;
 
-        const auto hdl = CreateCustomThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(mainRoutine), hModule, 0, nullptr);
+        const HANDLE hdl = CreateCustomThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(mainRoutine), hModule, 0, nullptr);
         if (hdl)
             CloseHandle(hdl);
     }

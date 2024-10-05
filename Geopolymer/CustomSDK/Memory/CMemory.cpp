@@ -6,7 +6,7 @@
 CPatternScan* g_PatternScan = nullptr;
 CMemory* g_Memory = nullptr;
 
-DWORD CMemory::GetHashFromString(char* szString) const
+DWORD CMemory::GetHashFromString(char* szString)
 {
     size_t iLength = strnlen_s(szString, 50);
     DWORD hash = 0x35;
@@ -32,7 +32,7 @@ PEB* CPatternScan::GetPEB()
     return peb;
 }
 
-HMODULE CMemory::ResolveModuleBaseAddressPEB(char* szModuleName) const
+HMODULE CMemory::ResolveModuleBaseAddressPEB(char* szModuleName)
 {
     // Convert the input module name to LPCWSTR
     LPCWSTR lModuleName = ConvertToLPCWSTR(szModuleName);
@@ -71,31 +71,31 @@ HMODULE CMemory::ResolveModuleBaseAddressPEB(char* szModuleName) const
 
 PDWORD CMemory::GetFunctionAddressByHash(char* library, DWORD hash)
 {
-    PDWORD functionAddress = nullptr;
+    PDWORD functionAddress = (PDWORD)0;
 
     // Get base address of the module in which our exported function of interest resides (kernel32 in the case of CreateThread)
-    HMODULE libraryBase = ResolveModuleBaseAddressPEB(library);
+    HMODULE libraryBase = LoadLibraryA(library);
 
-    auto dosHeader = (PIMAGE_DOS_HEADER)libraryBase;
-    auto imageNTHeaders = (PIMAGE_NT_HEADERS)((DWORD)libraryBase + dosHeader->e_lfanew);
+    PIMAGE_DOS_HEADER dosHeader = (PIMAGE_DOS_HEADER)libraryBase;
+    PIMAGE_NT_HEADERS imageNTHeaders = (PIMAGE_NT_HEADERS)((DWORD_PTR)libraryBase + dosHeader->e_lfanew);
 
-    DWORD exportDirectoryRVA = imageNTHeaders->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT].VirtualAddress;
+    DWORD_PTR exportDirectoryRVA = imageNTHeaders->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT].VirtualAddress;
 
-    auto imageExportDirectory = (PIMAGE_EXPORT_DIRECTORY)((DWORD)libraryBase + exportDirectoryRVA);
+    PIMAGE_EXPORT_DIRECTORY imageExportDirectory = (PIMAGE_EXPORT_DIRECTORY)((DWORD_PTR)libraryBase + exportDirectoryRVA);
 
     // Get RVAs to exported function related information
-    auto addresOfFunctionsRVA = (PDWORD)((DWORD)libraryBase + imageExportDirectory->AddressOfFunctions);
-    auto addressOfNamesRVA = (PDWORD)((DWORD)libraryBase + imageExportDirectory->AddressOfNames);
-    auto addressOfNameOrdinalsRVA = (PWORD)((DWORD)libraryBase + imageExportDirectory->AddressOfNameOrdinals);
+    PDWORD addresOfFunctionsRVA = (PDWORD)((DWORD_PTR)libraryBase + imageExportDirectory->AddressOfFunctions);
+    PDWORD addressOfNamesRVA = (PDWORD)((DWORD_PTR)libraryBase + imageExportDirectory->AddressOfNames);
+    PWORD addressOfNameOrdinalsRVA = (PWORD)((DWORD_PTR)libraryBase + imageExportDirectory->AddressOfNameOrdinals);
 
     // Iterate through exported functions, calculate their hashes and check if any of them match our hash of 0x00544e304 (CreateThread)
     // If yes, get its virtual memory address (this is where CreateThread function resides in memory of our process)
     for (DWORD i = 0; i < imageExportDirectory->NumberOfFunctions; i++)
     {
         DWORD functionNameRVA = addressOfNamesRVA[i];
-        DWORD functionNameVA = (DWORD)libraryBase + functionNameRVA;
-        auto* functionName = (char*)functionNameVA;
-        DWORD functionAddressRVA = 0;
+        DWORD_PTR functionNameVA = (DWORD_PTR)libraryBase + functionNameRVA;
+        char* functionName = (char*)functionNameVA;
+        DWORD_PTR functionAddressRVA = 0;
 
         // Calculate hash for this exported function
         DWORD functionNameHash = GetHashFromString(functionName);
@@ -104,14 +104,14 @@ PDWORD CMemory::GetFunctionAddressByHash(char* library, DWORD hash)
         if (functionNameHash == hash)
         {
             functionAddressRVA = addresOfFunctionsRVA[addressOfNameOrdinalsRVA[i]];
-            functionAddress = (PDWORD)((DWORD)libraryBase + functionAddressRVA);
-            //printf("%s : 0x%x : %p\n", functionName, functionNameHash, functionAddress);
+            functionAddress = (PDWORD)((DWORD_PTR)libraryBase + functionAddressRVA);
+            printf("%s : 0x%x : %p\n", functionName, functionNameHash, functionAddress);
             return functionAddress;
         }
     }
 }
 
-void* CMemory::GetFunctionAddress(char* MyNtdllFunction, PVOID MyDLLBaseAddress) const
+void* CMemory::GetFunctionAddress(char* MyNtdllFunction, PVOID MyDLLBaseAddress)
 {
     DWORD j;
     uintptr_t RVA = 0;
@@ -153,7 +153,7 @@ void* CMemory::GetFunctionAddress(char* MyNtdllFunction, PVOID MyDLLBaseAddress)
     }
 }
 
-LPCWSTR CMemory::ConvertToLPCWSTR(const char* szModuleName) const
+LPCWSTR CMemory::ConvertToLPCWSTR(const char* szModuleName)
 {
     if (!szModuleName)
         return nullptr;

@@ -11,6 +11,8 @@
 #include "../../ValveSDK/Interfaces/IMaterialSystem.h"
 #include "../../ValveSDK/Entities/C_CSPlayer.h"
 
+#include "../../Features/Visuals/Chams.h"
+
 typedef bool(__thiscall* tCreateMove)(void*, float, CUserCmd*);
 tCreateMove oCreateMove = nullptr;
 
@@ -27,7 +29,9 @@ bool __fastcall hkCreateMove(void* thisptr, void* edx, float flInputSampleTime, 
 typedef void(__thiscall* tDrawModelExecute)(void*, const DrawModelState_t& pState, const ModelRenderInfo_t& pInfo, matrix3x4_t* pBoneToWorld);
 tDrawModelExecute oDrawModelExecute = nullptr;
 
-static float clearColor[3] = { 1.f,1.f,1.f };
+bool bDrawOriginal = false;
+float color[4] = { 0.902f, 0.133f, 0.796f, 1.f };
+float colorvvv[4] = { 0.1f, 0.833f, 0.296f, 1.f };
 
 void __fastcall hkDrawModelExecute(void* thisptr, void* edx, const DrawModelState_t& pState, const ModelRenderInfo_t& pInfo, matrix3x4_t* pCustomBoneToWorld)
 {
@@ -43,91 +47,50 @@ void __fastcall hkDrawModelExecute(void* thisptr, void* edx, const DrawModelStat
 
 	std::string modelName = pInfo.pModel->name;
 
+	IMaterial* pMat = Interface::MaterialSystem->FindMaterial("models/debug/debugwhite", TEXTURE_GROUP_MODEL);
+	pMat->AddRef();
+
 	if (modelName.find(xorstr("models/player")) != std::string::npos && pEnt->IsPlayer() && pEnt->IsAlive() && pEnt != g_LocalPlayer.pEntity)
 	{
 		auto pRenderContext = (IMatRenderContext*)Interface::MaterialSystem->GetRenderContext();
-		// ignore z
-		if (pRenderContext)
-			pRenderContext->DepthRange(0.f, 0.f);
 
-		bool bDrawOriginal = true;
+		// ignore z
+		if (pRenderContext && bDrawOriginal)
+			pRenderContext->DepthRange(0.f, 0.f);
 
 		if (bDrawOriginal)
 			oDrawModelExecute(thisptr, pState, pInfo, pCustomBoneToWorld);
-		/*
-		// material override
-		IMaterial* DebugWhite = Interface::MaterialSystem->FindMaterial(xorstr("vgui/white_additive"), xorstr(TEXTURE_GROUP_VGUI));
-		DebugWhite->SetMaterialVarFlag(MATERIAL_VAR_FLAT, true);
-		DebugWhite->SetMaterialVarFlag(MATERIAL_VAR_IGNOREZ, true);
-		DebugWhite->SetMaterialVarFlag(MATERIAL_VAR_SELFILLUM, true);
-		Interface::ModelRender->SuppressEngineLighting(true);
-		Interface::ModelRender->SetupLighting(Vector());
 
-		Interface::RenderView->SetColorModulation(0.f, 0.f, 255.f);
-		Interface::RenderView->SetBlend(0.4f);
-		Interface::ModelRender->ForcedMaterialOverride(DebugWhite);
-
-		oDrawModelExecute(thisptr, pState, pInfo, pCustomBoneToWorld);
-
-		// visible
-
-		DebugWhite->SetMaterialVarFlag(MATERIAL_VAR_IGNOREZ, false);
-		DebugWhite->SetMaterialVarFlag(MATERIAL_VAR_SELFILLUM, false);
-		Interface::RenderView->SetBlend(0.7f);
-		Interface::RenderView->SetColorModulation(255.f, 0.f, 0.f);
-		Interface::ModelRender->ForcedMaterialOverride(DebugWhite);
-
-		oDrawModelExecute(thisptr, pState, pInfo, pCustomBoneToWorld);
-
-		*/
-
-		// Clean Up
-		/*
-		Interface::ModelRender->SuppressEngineLighting(false);
-
-		Interface::RenderView->SetColorModulation(clearColor);
-		Interface::RenderView->SetBlend(1.f);
-
-		Interface::ModelRender->ForcedMaterialOverride(nullptr);
-		*/
-
-		if (pRenderContext)
+		if (pRenderContext && bDrawOriginal)
 			pRenderContext->DepthRange(0.f, 1.f);
 
-		return;
+		// Invisible CHAMS
+		Chams::PushIgnoreZ();
+		Chams::PushMaterialOverride(color);
 
-	} 
-
-/*
-	* 
-	if (pInfo.pModel)
-	{
-		std::string modelName = pInfo.pModel->name;
-
-		if (modelName.find("models/player") != std::string::npos)
-		{
-			
-		}
-		else if (modelName.find("flash") != std::string::npos)
-		{
-			IMaterial* FlashWhite = Interface::MaterialSystem->FindMaterial(xorstr("effects\\flashbang_white"), xorstr(TEXTURE_GROUP_CLIENT_EFFECTS));
-			FlashWhite->SetMaterialVarFlag(MATERIAL_VAR_NO_DRAW, true);
-			Interface::ModelRender->ForcedMaterialOverride(FlashWhite);
-		}
-		else if (modelName.find("models/weapons/") != std::string::npos)
-		{
-			IMaterial* test = Interface::MaterialSystem->FindMaterial(xorstr("models/debug/debugwhite"), xorstr(TEXTURE_GROUP_MODEL));
-			test->SetMaterialVarFlag(MATERIAL_VAR_WIREFRAME, true);
-			Interface::RenderView->SetBlend(1.0f);
-			Interface::RenderView->SetColorModulation(0.f, 255.f, 0.f);
-			Interface::ModelRender->ForcedMaterialOverride(test);
-		}
 		oDrawModelExecute(thisptr, pState, pInfo, pCustomBoneToWorld);
-	}
 
-	Interface::RenderView->SetColorModulation(1.f,1.f,1.f);
-	Interface::ModelRender->ForcedMaterialOverride(nullptr);
-*/
+		;		Chams::PopIgnoreZ();
+		Chams::PopMaterialOverride();
+	}
+	else if (modelName.find("flash") != std::string::npos)
+	{
+		IMaterial* FlashWhite = Interface::MaterialSystem->FindMaterial(xorstr("effects\\flashbang_white"), xorstr(TEXTURE_GROUP_CLIENT_EFFECTS));
+		FlashWhite->SetMaterialVarFlag(MATERIAL_VAR_NO_DRAW, true);
+		Interface::ModelRender->ForcedMaterialOverride(FlashWhite);
+	}
+	else if (modelName.find("models/weapons/") != std::string::npos)
+	{
+		IMaterial* test = Interface::MaterialSystem->FindMaterial(xorstr("models/debug/debugwhite"), xorstr(TEXTURE_GROUP_MODEL));
+		test->SetMaterialVarFlag(MATERIAL_VAR_WIREFRAME, true);
+		Interface::RenderView->SetBlend(1.0f);
+		Interface::RenderView->SetColorModulation(0.f, 255.f, 0.f);
+		Interface::ModelRender->ForcedMaterialOverride(test);
+	}
+	oDrawModelExecute(thisptr, pState, pInfo, pCustomBoneToWorld);
+
+	Chams::PopMaterialOverride();
+
 	oDrawModelExecute(thisptr, pState, pInfo, pCustomBoneToWorld);
 }
 
@@ -147,7 +110,6 @@ bool HookManager::Initialize()
 
 	return true;
 }
-
 
 bool HookManager::Destroy()
 {
